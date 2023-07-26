@@ -126,7 +126,7 @@
         .then(data => {
           const gelRate = data.conversion_rates.GEL;
           // convert the amount to GEL
-          const convertion = ((gelRate - 3.33)/gelRate)+1
+          const convertion = ((gelRate - 2.63)/gelRate)+1
           const amountInGEL = totalCost * convertion;
           document.getElementById('result'  ).innerText = 'გადასახდელია: ' + amountInGEL.toFixed(2) + ' ₾';
         });
