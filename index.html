@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Pipe Price Calculator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    form {
+      margin-top: 2em;
+    }
+    input {
+      margin-top: 1em;
+    }
+    #result {
+      margin-top: 2em;
+    }
+  </style>
+</head>
+<body>
+  <h1>Pipe Price Calculator</h1>
+  <form id="pipe-form">
+    <label for="pipe_size">Select Pipe Size:</label>
+    <select id="pipe_size">
+      <option value="7.31">25x50x3.0</option>
+      <option value="3.50">20x30x1.5</option>
+      
+    </select>
+    <br>
+    <label for="length">Enter Length in Meters:</label>
+    <input type="number" id="length" name="length" min="1" step="1">
+    <br>
+    <input type="submit" value="Calculate">
+  </form>
+  <div id="result"></div>
+
+  <script>
+    document.getElementById('pipe-form').addEventListener('submit', function(event) {
+      event.preventDefault();
+      
+      var pipeSizePrice = parseFloat(document.getElementById('pipe_size').value);
+      var length = parseFloat(document.getElementById('length').value);
+
+      if (isNaN(pipeSizePrice) || isNaN(length)) {
+        document.getElementById('result').innerText = 'Please select pipe size and enter length.';
+      } else {
+        var totalCost = pipeSizePrice * length;
+        document.getElementById('result').innerText = 'The total cost is: $' + totalCost.toFixed(2);
+      }
+    });
+  </script>
+</body>
+</html>
