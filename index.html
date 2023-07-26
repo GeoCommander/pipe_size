@@ -24,7 +24,6 @@
     <select id="pipe_size">
       <option value="7.31">25x50x3.0</option>
       <option value="3.50">20x30x1.5</option>
-      
     </select>
     <br>
     <label for="length">Enter Length in Meters:</label>
@@ -45,7 +44,18 @@
         document.getElementById('result').innerText = 'Please select pipe size and enter length.';
       } else {
         var totalCost = pipeSizePrice * length;
-        document.getElementById('result').innerText = 'The total cost is: $' + totalCost.toFixed(2);
+        
+        // replace 'YOUR_API_KEY' with the key you get from https://www.exchangerate-api.com/
+        // ეს უსაფრთხო არ არის მაგრამ მაინც უფასოა და არაუშავს. ისე apiKey არასოდეს უნდა იყოს გამოქვეყნებული
+        const apiKey = '9257ce800bfdb4f47d8fcee6';
+        fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
+        .then(response => response.json())
+        .then(data => {
+          const gelRate = data.conversion_rates.GEL;
+          // convert the amount to GEL
+          const amountInGEL = totalCost * gelRate;
+          document.getElementById('result'  ).innerText = 'The total cost is: ' + amountInGEL.toFixed(2) + ' GEL';
+        });
       }
     });
   </script>
