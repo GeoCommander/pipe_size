@@ -20,7 +20,7 @@
 <body>
   <h1>კვადრატული მილის კალკულატორი</h1>
   <form id="pipe-form">
-    <label for="pipe_size">აირჩიეთ მილის:</label>
+    <label for="pipe_size">აირჩიეთ მილი:</label>
     <select id="pipe_size">
       <option value="1.6">10x10x1.5</option>
       <option value="2.4">10x20x2.5</option>
@@ -97,7 +97,7 @@
       <option value="65.0">150x150x4,5</option>
     </select>
     <br>
-    <label for="length">შეიყვანეთ ზომა:</label>
+    <label for="length">შეიყვანეთ ზომა (მ):</label>
     <input type="number" id="length" name="length" min="1" step="1">
     <br>
     <input type="submit" value="Calculate">
@@ -112,7 +112,7 @@
       var length = parseFloat(document.getElementById('length').value);
 
       if (isNaN(pipeSizePrice) || isNaN(length)) {
-        document.getElementById('result').innerText = 'Please select pipe size and enter length.';
+        document.getElementById('result').innerText = 'აირჩიეთ ზომა!';
       } else {
         var totalCost = pipeSizePrice * length;
         
@@ -128,7 +128,7 @@
           // convert the amount to GEL
           const convertion = ((gelRate - 3.33)/gelRate)+1
           const amountInGEL = totalCost * convertion;
-          document.getElementById('result'  ).innerText = 'The total cost is: ' + amountInGEL.toFixed(2) + ' GEL';
+          document.getElementById('result'  ).innerText = 'გადასახდელია: ' + amountInGEL.toFixed(2) + ' ₾';
         });
       }
     });
