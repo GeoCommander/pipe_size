@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Pipe Price Calculator</title>
+  <title>კალკულატორი</title>
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,15 +18,86 @@
   </style>
 </head>
 <body>
-  <h1>Pipe Price Calculator</h1>
+  <h1>კვადრატული მილის კალკულატორი</h1>
   <form id="pipe-form">
-    <label for="pipe_size">Select Pipe Size:</label>
+    <label for="pipe_size">აირჩიეთ მილის:</label>
     <select id="pipe_size">
-      <option value="7.31">25x50x3.0</option>
-      <option value="3.50">20x30x1.5</option>
+      <option value="1.6">10x10x1.5</option>
+      <option value="2.4">10x20x2.5</option>
+      <option value="2.8">10x25x2,5</option>
+      <option value="3.8">10x30x2,5</option>
+      <option value="2.6">15x15x1,5</option>
+      <option value="4.4">15x25x2,5</option>
+      <option value="3.4">20x20x2,0</option>
+      <option value="3.9">20x20x2,5</option>
+      <option value="4.1">25x25x2,5</option>
+      <option value="7.3">25x50x3,0</option>
+      <option value="3.5">20x30x1,5</option>
+      <option value="3.9">20x30x2,0</option>
+      <option value="4.5">20x30x2,5</option>
+      <option value="5.2">20x30x3,5</option>
+      <option value="4.8">30x30x2,0</option>
+      <option value="5.9">30x30x2,5</option>
+      <option value="4.3">20x40x1,6</option>
+      <option value="5.2">20x40x2,0</option>
+      <option value="6.4">20x40x2,5</option>
+      <option value="5.9">20x50x2,0</option>
+      <option value="7.1">20x60x2,0</option>
+      <option value="4.9">30x40x1,7</option>
+      <option value="5.4">30x40x2,0</option>
+      <option value="6.7">30x40x2,5</option>
+      <option value="6.9">35x35x2,5</option>
+      <option value="5.4">40x40x1,6</option>
+      <option value="6.7">40x40x2,0</option>
+      <option value="7.8">40x40x2,5</option>
+      <option value="8.9">40x40x3,0</option>
+      <option value="10.2">40x40x3,5</option>
+      <option value="8">40x50x2,0</option>
+      <option value="8.5">40x60x2,0</option>
+      <option value="10.5">40x60x2,5</option>
+      <option value="12.4">40x60x3,5</option>
+      <option value="9.8">40x80x2,0</option>
+      <option value="11.9">40x80x2,5</option>
+      <option value="14.5">40x80x3,5</option>
+      <option value="17.6">40x80x4,0</option>
+      <option value="8.5">50x50x2,0</option>
+      <option value="9.5">50x50x2,5</option>
+      <option value="14.7">50x50x4,0</option>
+      <option value="6.4">50x30x2,0</option>
+      <option value="8.6">50x30x2,5</option>
+      <option value="7.9">60x60x1,6</option>
+      <option value="9.8">60x60x2,0</option>
+      <option value="12.7">60x60x2,5</option>
+      <option value="5.9">60x30x1,6</option>
+      <option value="8.8">60x30x2,0</option>
+      <option value="9.3">60x30x2,5</option>
+      <option value="12.8">60x30x3,0</option>
+      <option value="14.1">70x70x2,5</option>
+      <option value="17.4">70x70x3,0</option>
+      <option value="9.8">70x30x3,0</option>
+      <option value="13.5">80x80x2,0</option>
+      <option value="15.6">80x80x3,0</option>
+      <option value="20.3">80x80x3,5</option>
+      <option value="24.2">80x80x4,0</option>
+      <option value="11.6">80x60x2,0</option>
+      <option value="16.8">90x90x2,5</option>
+      <option value="26.8">90x90x4,0</option>
+      <option value="11.9">100x40x2,0</option>
+      <option value="16.8">100x40x3,0</option>
+      <option value="16.3">100x50x3,0</option>
+      <option value="17.6">100x100x2,0</option>
+      <option value="22.4">100x100x2,5</option>
+      <option value="25.20">100x100x3,0</option>
+      <option value="34.8">100x100x4,0</option>
+      <option value="20.2">120x60x2,5</option>
+      <option value="24.2">120x60x3,5</option>
+      <option value="26.8">120x80x3,5</option>
+      <option value="65.0">120x120x5,0</option>
+      <option value="47.0">140x140x3,5</option>
+      <option value="65.0">150x150x4,5</option>
     </select>
     <br>
-    <label for="length">Enter Length in Meters:</label>
+    <label for="length">შეიყვანეთ ზომა:</label>
     <input type="number" id="length" name="length" min="1" step="1">
     <br>
     <input type="submit" value="Calculate">
@@ -47,13 +118,16 @@
         
         // replace 'YOUR_API_KEY' with the key you get from https://www.exchangerate-api.com/
         // ეს უსაფრთხო არ არის მაგრამ მაინც უფასოა და არაუშავს. ისე apiKey არასოდეს უნდა იყოს გამოქვეყნებული
+        // ამ ფორმულაში ამრავლებს 3ზე(კურსზე)
+
         const apiKey = '9257ce800bfdb4f47d8fcee6';
         fetch(`https://v6.exchangerate-api.com/v6/${apiKey}/latest/USD`)
         .then(response => response.json())
         .then(data => {
           const gelRate = data.conversion_rates.GEL;
           // convert the amount to GEL
-          const amountInGEL = totalCost * gelRate;
+          const convertion = ((gelRate - 3.33)/gelRate)+1
+          const amountInGEL = totalCost * convertion;
           document.getElementById('result'  ).innerText = 'The total cost is: ' + amountInGEL.toFixed(2) + ' GEL';
         });
       }
